@@ -70,6 +70,7 @@ class Calculadora_imc:
                 cor = "orange"
             elif resultado < 35:
                 status = "Obesidade grau I"
+                
                 cor = "red"
             elif resultado < 40:
                 status = "Obesidade grau II"
