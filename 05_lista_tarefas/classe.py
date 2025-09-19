@@ -1,0 +1,93 @@
+import ttkbootstrap as tk
+class Lista_tarefas:
+    def __init__(self):
+        self.janela = tk.Window(themename="darkly")
+        self.janela.geometry("1920x1080")
+        self.janela.title("Lista de tarefas")
+        self.janela.state("zoomed")
+        self.janela.resizable(True, True)
+        self.tela_login()
+        
+    def tela_login(self):
+        for widget in self.janela.winfo_children():
+            widget.destroy()
+        self.user = tk.Entry(self.janela, width=30, font=("arial", 20))
+        self.texto_login= tk.Label(self.janela,text="Usuário", font=("arial", 20))
+        self.texto_senha= tk.Label(self.janela,text="Senha", font=("arial", 20))
+        self.senha = tk.Entry(self.janela, width=30, font=("arial", 20))
+        self.botao = tk.Button(self.janela, width=20, text="Entrar", padding=(20,10), command=self.verificador_senha)
+        self.botao.place(relx=0.5, rely=0.57, anchor="center")
+        self.user.place(relx=0.5, rely=0.40, anchor="center" )
+        self.senha.place(relx=0.5, rely=0.51, anchor="center" )
+        self.texto_login.place(relx=0.5, rely=0.35, anchor="center")
+        self.texto_senha.place(relx=0.5, rely=0.46, anchor="center")
+        self.texto_senha.lower(self.user)
+
+
+    def verificador_senha(self):
+        self.senha_cad = "a"
+        self.user_cad = "a"
+        self.user_dig = self.user.get()
+        self.senha_dig = self.senha.get()
+        for widget in self.janela.winfo_children():
+            widget.destroy()
+        self.login_aceito= tk.Label(self.janela,text="Login feito com sucesso", font=("Arial", 50))
+        if self.senha_dig == self.senha_cad and self.user_dig == self.user_cad:
+            self.login_aceito.place( relx=0.5, rely=0.5, anchor="center")
+            self.voltar = tk.Button(self.janela, width=50,text="Voltar", command=self.tela_login)
+            self.voltar.place(relx=0.5, rely=0.57, anchor="center")
+        else:
+            self.erro = tk.Label(self.janela, text="Login incorreto", font=("Arial", 50))
+            self.erro.place(relx=0.5, rely=0.5, anchor="center")
+            self.voltar = tk.Button(self.janela, width=50,text="Voltar", command=self.tela_login)
+            self.voltar.place(relx=0.5, rely=0.57, anchor="center")
+
+    def tela_lista_tarefas():
+        
+      
+      
+
+            
+    
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def run(self):
+        """Inicia a self.janela. Mantém aberta."""
+        # Iniciar o loop da self.janela
+        self.janela.mainloop()
+
+
+
+
+if __name__ == "__main__":
+    bot = Lista_tarefas()
+    bot.run()
