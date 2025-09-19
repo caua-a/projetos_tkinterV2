@@ -9,13 +9,22 @@ class Lista_tarefas:
         self.tela_login()
         
     def tela_login(self):
+        
+        # Apaga os widgets com função interna do ttk
         for widget in self.janela.winfo_children():
             widget.destroy()
-        self.user = tk.Entry(self.janela, width=30, font=("arial", 20))
+        
+        # BUTTON
+        self.botao = tk.Button(self.janela, width=20, text="Entrar", padding=(20,10), command=self.verificador_senha)
+
+        # LABEL
         self.texto_login= tk.Label(self.janela,text="Usuário", font=("arial", 20))
         self.texto_senha= tk.Label(self.janela,text="Senha", font=("arial", 20))
+        
+        # ENTRY
+        self.user = tk.Entry(self.janela, width=30, font=("arial", 20))
         self.senha = tk.Entry(self.janela, width=30, font=("arial", 20))
-        self.botao = tk.Button(self.janela, width=20, text="Entrar", padding=(20,10), command=self.verificador_senha)
+
         self.botao.place(relx=0.5, rely=0.57, anchor="center")
         self.user.place(relx=0.5, rely=0.40, anchor="center" )
         self.senha.place(relx=0.5, rely=0.51, anchor="center" )
@@ -36,45 +45,13 @@ class Lista_tarefas:
             self.login_aceito.place( relx=0.5, rely=0.5, anchor="center")
             self.voltar = tk.Button(self.janela, width=50,text="Voltar", command=self.tela_login)
             self.voltar.place(relx=0.5, rely=0.57, anchor="center")
+            self.entrar_lista = tk.Button(self.janela, width=30, text="Ir para lista de tarefas", command=self.tela_lista_tarefas)
+            self.entrar_lista.place(relx=0.5, rely=0.65, anchor="center")
         else:
             self.erro = tk.Label(self.janela, text="Login incorreto", font=("Arial", 50))
             self.erro.place(relx=0.5, rely=0.5, anchor="center")
             self.voltar = tk.Button(self.janela, width=50,text="Voltar", command=self.tela_login)
             self.voltar.place(relx=0.5, rely=0.57, anchor="center")
-
-    def tela_lista_tarefas():
-        
-      
-      
-
-            
-    
-        
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
