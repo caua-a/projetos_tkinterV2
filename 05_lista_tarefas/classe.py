@@ -1,5 +1,6 @@
 import ttkbootstrap as tk
-class Lista_tarefas:
+from classe_lista import Lista
+class Tela_inicial:
     def __init__(self):
         self.janela = tk.Window(themename="darkly")
         self.janela.geometry("1920x1080")
@@ -45,8 +46,8 @@ class Lista_tarefas:
             self.login_aceito.place( relx=0.5, rely=0.5, anchor="center")
             self.voltar = tk.Button(self.janela, width=50,text="Voltar", command=self.tela_login)
             self.voltar.place(relx=0.5, rely=0.57, anchor="center")
-            self.entrar_lista = tk.Button(self.janela, width=30, text="Ir para lista de tarefas", command=self.tela_lista_tarefas)
-            self.entrar_lista.place(relx=0.5, rely=0.65, anchor="center")
+            self.entrar_lista = tk.Button(self.janela, width=20, text="Ir para lista de tarefas", command=self.trocar_tela)
+            self.entrar_lista.place(relx=0.5, rely=0.75, anchor="center")
         else:
             self.erro = tk.Label(self.janela, text="Login incorreto", font=("Arial", 50))
             self.erro.place(relx=0.5, rely=0.5, anchor="center")
@@ -54,7 +55,10 @@ class Lista_tarefas:
             self.voltar.place(relx=0.5, rely=0.57, anchor="center")
 
 
-
+    def trocar_tela(self):
+        self.janela.destroy()
+        lista_tela = Lista()
+        lista_tela.run()
 
 
     def run(self):
@@ -65,6 +69,3 @@ class Lista_tarefas:
 
 
 
-if __name__ == "__main__":
-    bot = Lista_tarefas()
-    bot.run()

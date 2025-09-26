@@ -1,5 +1,6 @@
-from classe import Lista_tarefas
+from classe import Tela_inicial
 
 
-app = Lista_tarefas()
+
+app = Tela_inicial()
 app.run()
