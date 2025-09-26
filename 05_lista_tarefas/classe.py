@@ -35,8 +35,8 @@ class Tela_inicial:
 
 
     def verificador_senha(self):
-        self.senha_cad = "a"
-        self.user_cad = "a"
+        self.user_cad = "Godofredo"
+        self.senha_cad = "amogirassol"
         self.user_dig = self.user.get()
         self.senha_dig = self.senha.get()
         for widget in self.janela.winfo_children():
