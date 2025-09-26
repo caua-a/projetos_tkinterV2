@@ -1,10 +1,12 @@
 import ttkbootstrap as tk
 from classe_lista import Lista
+from db import Banco
 class Tela_inicial:
     def __init__(self):
         self.janela = tk.Window(themename="darkly")
         self.janela.geometry("1920x1080")
         self.janela.title("Lista de tarefas")
+        
         self.janela.state("zoomed")
         self.janela.resizable(True, True)
         self.tela_login()
@@ -33,6 +35,7 @@ class Tela_inicial:
         self.texto_senha.place(relx=0.5, rely=0.46, anchor="center")
         self.texto_senha.lower(self.user)
 
+ # --------------------------------------------------------------------------------------
 
     def verificador_senha(self):
         self.user_cad = "Godofredo"
@@ -55,11 +58,14 @@ class Tela_inicial:
             self.voltar.place(relx=0.5, rely=0.57, anchor="center")
 
 
+ # --------------------------------------------------------------------------------------
+
     def trocar_tela(self):
         self.janela.destroy()
         lista_tela = Lista()
         lista_tela.run()
 
+ # --------------------------------------------------------------------------------------
 
     def run(self):
         """Inicia a self.janela. Mantém aberta."""

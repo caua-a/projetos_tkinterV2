@@ -1,15 +1,18 @@
 import ttkbootstrap as tk
 from tkinter import Listbox
-
+from db import Banco
 class Lista:
     def __init__(self):
         self.janela = tk.Window(themename="darkly")
         self.janela.geometry("1920x1080")
         self.janela.title("Lista de tarefas")
         self.janela.state("zoomed")
+        self.db = Banco()
         self.janela.resizable(True, True)
         self.tela_lista()
+        self.carregar_tarefas()
 
+ # --------------------------------------------------------------------------------------
 
     def tela_lista(self):
         self.frame_central = tk.Frame(self.janela, height=1080,width=1500, bootstyle= "dark")
@@ -30,35 +33,54 @@ class Lista:
         self.botao_concluir.place(relx=0.6, rely=0.28, anchor="center")
         self.itens=Listbox(self.frame_interno, width=50, height=20)
         self.itens.place(relx=0.5, rely=0.5, anchor="center")
+        self.ids_tarefas = []
+    
+ # --------------------------------------------------------------------------------------
+
+    def carregar_tarefas(self):
+        self.itens.delete(0, "end")
+        self.ids_tarefas.clear()
+
+        tarefas = self.db.listar_tarefas()
+        for tarefa in tarefas:
+            id_, nome, concluido = tarefa
+            status = "[x]" if concluido else "[ ]"
+            self.itens.insert("end", f"{status} {nome}")
+            self.ids_tarefas.append(id_)
+ # --------------------------------------------------------------------------------------
 
     def lista(self):
         self.itens_lista = self.tarefa_digitar.get()
         self.itens.insert("end", f"[  ] {self.itens_lista}")
         self.tarefa_digitar.delete(0,"end")
+        self.db.adicionar_tarefa(self.itens_lista)
+        self.carregar_tarefas()
+
+ # --------------------------------------------------------------------------------------
 
     def remover(self):
-        self.selecionado = self.itens.curselection()
-        if self.selecionado:
-            self.itens.delete(self.selecionado[0])
-        else:
-            None
+        selecionado = self.itens.curselection()
+        if selecionado:
+            index = selecionado[0]
+            id_tarefa = self.ids_tarefas[index] 
+            self.db.remover_tarefa(id_tarefa)
+            self.carregar_tarefas()
+
+ # --------------------------------------------------------------------------------------
 
     def concluir(self):
-        self.concluido=self.itens.curselection()
-        self.tarefa_concluida = str(self.itens.get(self.itens.curselection())).strip(' [ ]')
-        if self.concluido:
-            self.itens.delete(self.concluido[0])
-            self.itens.insert(self.concluido[0], f"[x] {self.tarefa_concluida}")
+        selecionado = self.itens.curselection()
+        if selecionado:
+            index = selecionado[0]
+            id_tarefa = self.ids_tarefas[index]
+            self.db.concluir_tarefa(id_tarefa)
+            self.carregar_tarefas()
             
-
+ # --------------------------------------------------------------------------------------
 
     def run(self):
     # Iniciar o loop da self.janela
         self.janela.mainloop()
 
 
-
-
-if __name__ == "__main__":
-    bot = Lista()
-    bot.run()
+ # --------------------------------------------------------------------------------------
