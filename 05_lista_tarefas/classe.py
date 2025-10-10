@@ -12,13 +12,14 @@ class Tela_inicial:
         self.tela_login()
         
     def tela_login(self):
-        
+        self.usuarios=[]
         # Apaga os widgets com função interna do ttk
         for widget in self.janela.winfo_children():
             widget.destroy()
         
         # BUTTON
         self.botao = tk.Button(self.janela, width=20, text="Entrar", padding=(20,10), command=self.verificador_senha)
+        self.botao.place(relx=0.5, rely=0.57, anchor="center")
 
         # LABEL
         self.texto_login= tk.Label(self.janela,text="Usuário", font=("arial", 20))
@@ -28,7 +29,6 @@ class Tela_inicial:
         self.user = tk.Entry(self.janela, width=30, font=("arial", 20))
         self.senha = tk.Entry(self.janela, width=30, font=("arial", 20))
 
-        self.botao.place(relx=0.5, rely=0.57, anchor="center")
         self.user.place(relx=0.5, rely=0.40, anchor="center" )
         self.senha.place(relx=0.5, rely=0.51, anchor="center" )
         self.texto_login.place(relx=0.5, rely=0.35, anchor="center")

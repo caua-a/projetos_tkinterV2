@@ -70,7 +70,7 @@ class Lista:
 
     def concluir(self):
         selecionado = self.itens.curselection()
-        if selecionado:
+        if selecionado:  
             index = selecionado[0]
             id_tarefa = self.ids_tarefas[index]
             self.db.concluir_tarefa(id_tarefa)
