@@ -1,6 +1,5 @@
 from classe import Tela_inicial
 
-
-
-app = Tela_inicial()
-app.run()
+if __name__ == "__main__":
+    app = Tela_inicial()
+    app.run()
