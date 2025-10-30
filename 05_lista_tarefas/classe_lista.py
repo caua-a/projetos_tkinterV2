@@ -15,10 +15,10 @@ class Lista:
  # --------------------------------------------------------------------------------------
 
     def tela_lista(self):
+        self.usuario_logado = None
         self.frame_central = tk.Frame(self.janela, height=1080,width=1500, bootstyle= "dark")
         self.frame_central.pack(pady=100, padx=150, anchor="center")
         self.frame_central.pack_propagate(False)
-
         self.texto = tk.Label(self.frame_central,text="Lista de tarefas", font=("Arial", 40), bootstyle= "inverse-dark")
         self.texto.pack(side="top")
         self.tarefa_digitar = tk.Entry(self.frame_central, width= 20, font=("arial", 20) ) 
